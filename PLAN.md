@@ -21,7 +21,7 @@ Domain: `orewise.io`. Still to check: EUIPO + BOIP trademark (classes 9, 42).
 | Tenancy | Single Keycloak realm; tenant = group `/tenants/<slug>`, subgroups -> collections |
 | Auth | Keycloak (OIDC), SSO to Microsoft / Google |
 | Access control | Group-based collections (Keycloak groups -> collections) |
-| Languages / region | Dutch + English, EU hosting |
+| Languages / region | Dutch + French + English, EU hosting |
 | First connectors | Manual upload, Dropbox API (personal + shared folders, no Business team folders), mounted-folder (self-host only) |
 | Pricing | Document volume: file count + storage cap per tier |
 | Quota exceeded | Skip new files (`QUOTA_EXCEEDED`), sync continues, admin notified |
@@ -91,7 +91,7 @@ Domain: `orewise.io`. Still to check: EUIPO + BOIP trademark (classes 9, 42).
 }
 ```
 
-`text` gets `dutch` and `english` analyzer sub-fields; language detected per chunk.
+`text` gets `dutch`, `french` and `english` analyzer sub-fields; language detected per chunk.
 
 ### 3.3 Ingestion pipeline
 
@@ -238,7 +238,7 @@ orewise/
     compose/           self-host core stack (no Ollama)
     ollama/            optional separate AI stack
     helm/              SaaS
-  eval/                golden Q&A sets (NL + EN)
+  eval/                golden Q&A sets (NL + FR + EN)
 ```
 
 ---
@@ -249,7 +249,7 @@ orewise/
 |---|---|---|
 | 1 | Skeleton, Compose stack, Keycloak, CI, tenant model with plan/limits | Stack up, admin login works |
 | 2-3 | Upload ingestion: Tika, chunk, embed, OpenSearch; quota enforcement | 1K files indexed; file 1,001 -> `QUOTA_EXCEEDED` |
-| 4-5 | Chat: rewrite, hybrid search, ACL filter, SSE, citations | 30-question NL/EN golden set >= 80% |
+| 4-5 | Chat: rewrite, hybrid search, ACL filter, SSE, citations | 30-question NL/FR/EN golden set >= 80% |
 | 6 | Dropbox connector: OAuth, full + delta sync, webhook, deletes | Add / edit / delete in Dropbox reflected within 1 min |
 | 7 | Angular admin: collections, Dropbox setup, usage meters, widgets | Admin onboards tenant end-to-end without API |
 | 8 | Widget both modes, allowed origins, rate limits, cost cap | Automated test: public widget cannot see intranet collections |
