@@ -24,7 +24,7 @@
     <nav aria-label="Main">
       <a href="#how">How it works</a>
       <a href="#features">Features</a>
-      <a href="#security">Security</a>
+      <a href="#security">Data safety</a>
       <a href="#pricing">Pricing</a>
       <a href="#faq">FAQ</a>
       <a class="btn btn-small" href="#early-access">Get early access</a>
@@ -53,7 +53,12 @@
           <a class="btn" href="#early-access">Get early access</a>
           <a class="btn btn-ghost" href="#how">See how it works</a>
         </div>
-        <p class="fine">EU-hosted or on your own server &middot; Dutch, French &amp; English &middot; No credit card</p>
+        <ul class="trust" aria-label="Data safety">
+          <li>Stored in the EU</li>
+          <li>Strictly separated per customer</li>
+          <li>Never used for AI training</li>
+        </ul>
+        <p class="fine">Or on your own server &middot; Dutch, French &amp; English &middot; No credit card</p>
       </div>
 
       <div class="chat" role="img" aria-label="Example chat: an employee asks about parental leave and Orewise answers with a source">
@@ -150,22 +155,63 @@
     </div>
   </section>
 
-  <section id="security" class="section">
-    <div class="wrap split">
-      <div>
-        <h2>Your documents stay yours</h2>
-        <p class="lead small">
-          We built Orewise for companies that can't afford to be careless with their data.
-        </p>
+  <section id="security" class="section safety">
+    <div class="wrap">
+      <p class="eyebrow center">Data safety</p>
+      <h2>Your data: safe, separated and in Europe</h2>
+      <p class="center muted intro">We built Orewise for companies that can't afford to be careless with their data. These are our commitments.</p>
+
+      <div class="safety-grid">
+        <article class="safety-card">
+          <span class="icon" aria-hidden="true">EU</span>
+          <h3>Stored in the EU</h3>
+          <p>Your documents, the search index, conversations and backups are kept in European data centres. AI processing runs through providers with European data residency.</p>
+        </article>
+        <article class="safety-card">
+          <span class="icon" aria-hidden="true">&#9638;</span>
+          <h3>Strictly separated per customer</h3>
+          <p>Every organisation has its own shielded environment. Every search is filtered to your organisation on our server &mdash; other customers' data is never visible, not even to the AI.</p>
+        </article>
+        <article class="safety-card">
+          <span class="icon" aria-hidden="true">&#9673;</span>
+          <h3>Only what you're allowed to see</h3>
+          <p>Access is granted per team and per collection. The AI only ever sees passages the person asking has access to &mdash; HR files stay with HR.</p>
+        </article>
+        <article class="safety-card">
+          <span class="icon" aria-hidden="true">&#128274;</span>
+          <h3>Encrypted</h3>
+          <p>All traffic runs over encrypted connections (TLS) and stored data is encrypted. Connections to sources like Dropbox are stored encrypted.</p>
+        </article>
+        <article class="safety-card">
+          <span class="icon" aria-hidden="true">&#10007;</span>
+          <h3>Never used for AI training</h3>
+          <p>Your documents and questions are not used to train AI models. We only work with providers that exclude this in their contracts.</p>
+        </article>
+        <article class="safety-card">
+          <span class="icon" aria-hidden="true">&sect;</span>
+          <h3>GDPR-proof &amp; you stay the owner</h3>
+          <p>Data processing agreement, an audit log of who did what, and one-click deletion of all your data. Deleted really means gone from the answers too.</p>
+        </article>
       </div>
-      <ul class="checks">
-        <li><strong>Hosted in the EU.</strong> Your data stays in European data centres.</li>
-        <li><strong>Or fully on your own server.</strong> Run Orewise on-premises with a simple Docker install.</li>
-        <li><strong>Optional local AI.</strong> Self-hosted customers can run the AI model in-house, so nothing leaves the building.</li>
-        <li><strong>Not used for training.</strong> We only use AI providers under terms that exclude training on your data.</li>
-        <li><strong>GDPR-ready.</strong> Data processing agreement, audit log, and one-click deletion of all your data.</li>
-        <li><strong>Strict separation.</strong> Every customer's data is isolated; access rules are enforced on every single question.</li>
-      </ul>
+
+      <div class="flow-box">
+        <h3>How your data stays separated &mdash; on every question</h3>
+        <ol class="flow">
+          <li><strong>Sign in</strong><span>with Microsoft or Google (SSO)</span></li>
+          <li><strong>Server determines</strong><span>your organisation and your teams</span></li>
+          <li><strong>Search</strong><span>only in documents you have access to</span></li>
+          <li><strong>AI answers</strong><span>based solely on those passages</span></li>
+        </ol>
+        <p class="muted">This check happens on our servers, not in the browser. So even a public website widget can never reach internal documents.</p>
+      </div>
+
+      <div class="selfhost">
+        <div>
+          <h3>Want nothing to leave your building?</h3>
+          <p>Run Orewise on your own server with a local AI model. Your documents and questions stay entirely inside your own network.</p>
+        </div>
+        <a class="btn btn-ghost" href="mailto:hello@orewise.io?subject=Orewise%20self-hosted">Ask about self-hosting</a>
+      </div>
     </div>
   </section>
 
@@ -230,6 +276,14 @@
   <section id="faq" class="section">
     <div class="wrap narrow">
       <h2>Questions</h2>
+      <details>
+        <summary>Where is my data stored?</summary>
+        <p>In European data centres: your documents, the search index, conversations and backups. To formulate answers we use AI providers with European data residency that don't use your data for training. If you want nothing to leave your network, you can self-host Orewise with a local AI model.</p>
+      </details>
+      <details>
+        <summary>Can other customers see my documents?</summary>
+        <p>No. Every organisation is shielded, and on every question our server filters the search results to your organisation and your access rights before the AI sees anything. Even within your own company, people only see the collections they have access to.</p>
+      </details>
       <details>
         <summary>What counts as a document?</summary>
         <p>One file is one document, whether it's a one-page memo or a 300-page manual. Each plan also has a storage limit.</p>

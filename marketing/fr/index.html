@@ -24,7 +24,7 @@
     <nav aria-label="Menu principal">
       <a href="#how">Comment &ccedil;a marche</a>
       <a href="#features">Fonctionnalit&eacute;s</a>
-      <a href="#security">S&eacute;curit&eacute;</a>
+      <a href="#security">S&eacute;curit&eacute; des donn&eacute;es</a>
       <a href="#pricing">Tarifs</a>
       <a href="#faq">FAQ</a>
       <a class="btn btn-small" href="#early-access">Acc&egrave;s anticip&eacute;</a>
@@ -53,7 +53,12 @@
           <a class="btn" href="#early-access">Demander un acc&egrave;s anticip&eacute;</a>
           <a class="btn btn-ghost" href="#how">Voir comment &ccedil;a marche</a>
         </div>
-        <p class="fine">H&eacute;berg&eacute; dans l'UE ou sur votre serveur &middot; Fran&ccedil;ais, n&eacute;erlandais &amp; anglais &middot; Sans carte de cr&eacute;dit</p>
+        <ul class="trust" aria-label="S&eacute;curit&eacute; des donn&eacute;es">
+          <li>Stock&eacute;es dans l'UE</li>
+          <li>Strictement s&eacute;par&eacute;es par client</li>
+          <li>Jamais utilis&eacute;es pour entra&icirc;ner l'IA</li>
+        </ul>
+        <p class="fine">Ou sur votre propre serveur &middot; Fran&ccedil;ais, n&eacute;erlandais &amp; anglais &middot; Sans carte de cr&eacute;dit</p>
       </div>
 
       <div class="chat" role="img" aria-label="Exemple de conversation : un collaborateur pose une question sur le cong&eacute; parental et Orewise r&eacute;pond en citant ses sources">
@@ -150,22 +155,63 @@
     </div>
   </section>
 
-  <section id="security" class="section">
-    <div class="wrap split">
-      <div>
-        <h2>Vos documents restent les v&ocirc;tres</h2>
-        <p class="lead small">
-          Nous avons con&ccedil;u Orewise pour les entreprises qui ne peuvent se permettre aucune n&eacute;gligence avec leurs donn&eacute;es.
-        </p>
+  <section id="security" class="section safety">
+    <div class="wrap">
+      <p class="eyebrow center">S&eacute;curit&eacute; des donn&eacute;es</p>
+      <h2>Vos donn&eacute;es&nbsp;: s&eacute;curis&eacute;es, s&eacute;par&eacute;es et en Europe</h2>
+      <p class="center muted intro">Nous avons con&ccedil;u Orewise pour les entreprises qui ne peuvent se permettre aucune n&eacute;gligence avec leurs donn&eacute;es. Voici nos engagements.</p>
+
+      <div class="safety-grid">
+        <article class="safety-card">
+          <span class="icon" aria-hidden="true">UE</span>
+          <h3>Stock&eacute;es dans l'UE</h3>
+          <p>Vos documents, l'index de recherche, les conversations et les sauvegardes sont conserv&eacute;s dans des centres de donn&eacute;es europ&eacute;ens. Le traitement par l'IA passe par des fournisseurs avec r&eacute;sidence des donn&eacute;es en Europe.</p>
+        </article>
+        <article class="safety-card">
+          <span class="icon" aria-hidden="true">&#9638;</span>
+          <h3>Strictement s&eacute;par&eacute;es par client</h3>
+          <p>Chaque organisation dispose de son propre environnement cloisonn&eacute;. Chaque recherche est filtr&eacute;e sur votre organisation par nos serveurs &mdash; les donn&eacute;es des autres clients ne sont jamais visibles, pas m&ecirc;me pour l'IA.</p>
+        </article>
+        <article class="safety-card">
+          <span class="icon" aria-hidden="true">&#9673;</span>
+          <h3>Uniquement ce que vous pouvez voir</h3>
+          <p>L'acc&egrave;s est d&eacute;fini par &eacute;quipe et par collection. L'IA ne voit que les extraits auxquels la personne qui pose la question a acc&egrave;s &mdash; les dossiers RH restent aux RH.</p>
+        </article>
+        <article class="safety-card">
+          <span class="icon" aria-hidden="true">&#128274;</span>
+          <h3>Chiffr&eacute;es</h3>
+          <p>Tout le trafic passe par des connexions chiffr&eacute;es (TLS) et les donn&eacute;es stock&eacute;es sont chiffr&eacute;es. Les connexions &agrave; des sources comme Dropbox sont conserv&eacute;es chiffr&eacute;es.</p>
+        </article>
+        <article class="safety-card">
+          <span class="icon" aria-hidden="true">&#10007;</span>
+          <h3>Jamais utilis&eacute;es pour entra&icirc;ner l'IA</h3>
+          <p>Vos documents et vos questions ne servent pas &agrave; entra&icirc;ner des mod&egrave;les d'IA. Nous travaillons uniquement avec des fournisseurs qui l'excluent contractuellement.</p>
+        </article>
+        <article class="safety-card">
+          <span class="icon" aria-hidden="true">&sect;</span>
+          <h3>Conforme au RGPD &amp; vous restez propri&eacute;taire</h3>
+          <p>Accord de traitement des donn&eacute;es, journal d'audit de qui a fait quoi, et suppression de toutes vos donn&eacute;es en un clic. Supprim&eacute; signifie aussi disparu des r&eacute;ponses.</p>
+        </article>
       </div>
-      <ul class="checks">
-        <li><strong>H&eacute;berg&eacute; dans l'UE.</strong> Vos donn&eacute;es restent dans des centres de donn&eacute;es europ&eacute;ens.</li>
-        <li><strong>Ou enti&egrave;rement sur votre serveur.</strong> Installez Orewise sur site gr&acirc;ce &agrave; une simple installation Docker.</li>
-        <li><strong>IA locale en option.</strong> Les clients auto-h&eacute;berg&eacute;s peuvent ex&eacute;cuter le mod&egrave;le d'IA en interne&nbsp;: rien ne quitte vos murs.</li>
-        <li><strong>Pas d'entra&icirc;nement sur vos donn&eacute;es.</strong> Nous n'utilisons que des fournisseurs d'IA dont les conditions excluent l'entra&icirc;nement sur vos donn&eacute;es.</li>
-        <li><strong>Conforme au RGPD.</strong> Accord de traitement des donn&eacute;es, journal d'audit et suppression de toutes vos donn&eacute;es en un clic.</li>
-        <li><strong>S&eacute;paration stricte.</strong> Les donn&eacute;es de chaque client sont isol&eacute;es&nbsp;; les r&egrave;gles d'acc&egrave;s sont appliqu&eacute;es &agrave; chaque question.</li>
-      </ul>
+
+      <div class="flow-box">
+        <h3>Comment vos donn&eacute;es restent s&eacute;par&eacute;es &mdash; &agrave; chaque question</h3>
+        <ol class="flow">
+          <li><strong>Connexion</strong><span>via Microsoft ou Google (SSO)</span></li>
+          <li><strong>Le serveur d&eacute;termine</strong><span>votre organisation et vos &eacute;quipes</span></li>
+          <li><strong>Recherche</strong><span>uniquement dans les documents auxquels vous avez acc&egrave;s</span></li>
+          <li><strong>L'IA r&eacute;pond</strong><span>exclusivement sur la base de ces extraits</span></li>
+        </ol>
+        <p class="muted">Ce contr&ocirc;le a lieu sur nos serveurs, pas dans le navigateur. M&ecirc;me un widget public sur votre site ne peut donc jamais acc&eacute;der aux documents internes.</p>
+      </div>
+
+      <div class="selfhost">
+        <div>
+          <h3>Vous voulez que rien ne quitte vos murs&nbsp;?</h3>
+          <p>Faites tourner Orewise sur votre propre serveur avec un mod&egrave;le d'IA local. Vos documents et vos questions restent enti&egrave;rement dans votre r&eacute;seau.</p>
+        </div>
+        <a class="btn btn-ghost" href="mailto:hello@orewise.io?subject=Orewise%20auto-h%C3%A9berg%C3%A9">Se renseigner sur l'auto-h&eacute;bergement</a>
+      </div>
     </div>
   </section>
 
@@ -230,6 +276,14 @@
   <section id="faq" class="section">
     <div class="wrap narrow">
       <h2>Questions fr&eacute;quentes</h2>
+      <details>
+        <summary>O&ugrave; mes donn&eacute;es sont-elles stock&eacute;es&nbsp;?</summary>
+        <p>Dans des centres de donn&eacute;es europ&eacute;ens&nbsp;: vos documents, l'index de recherche, les conversations et les sauvegardes. Pour formuler les r&eacute;ponses, nous utilisons des fournisseurs d'IA avec r&eacute;sidence des donn&eacute;es en Europe, qui n'utilisent pas vos donn&eacute;es pour l'entra&icirc;nement. Si vous voulez que rien ne quitte votre r&eacute;seau, vous pouvez auto-h&eacute;berger Orewise avec un mod&egrave;le d'IA local.</p>
+      </details>
+      <details>
+        <summary>D'autres clients peuvent-ils voir mes documents&nbsp;?</summary>
+        <p>Non. Chaque organisation est cloisonn&eacute;e et, &agrave; chaque question, notre serveur filtre les r&eacute;sultats sur votre organisation et vos droits d'acc&egrave;s avant que l'IA ne voie quoi que ce soit. M&ecirc;me au sein de votre entreprise, chacun ne voit que les collections auxquelles il a acc&egrave;s.</p>
+      </details>
       <details>
         <summary>Qu'est-ce qui compte comme un document&nbsp;?</summary>
         <p>Un fichier &eacute;gale un document, qu'il s'agisse d'une note d'une page ou d'un manuel de 300 pages. Chaque formule comporte aussi une limite de stockage.</p>
