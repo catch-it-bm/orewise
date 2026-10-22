@@ -23,7 +23,7 @@
     <nav aria-label="Hoofdmenu">
       <a href="#how">Hoe het werkt</a>
       <a href="#features">Functies</a>
-      <a href="#security">Beveiliging</a>
+      <a href="#security">Gegevensveiligheid</a>
       <a href="#pricing">Prijzen</a>
       <a href="#faq">FAQ</a>
       <a class="btn btn-small" href="#early-access">Vroege toegang</a>
@@ -47,7 +47,12 @@
           <a class="btn" href="#early-access">Vraag vroege toegang</a>
           <a class="btn btn-ghost" href="#how">Bekijk hoe het werkt</a>
         </div>
-        <p class="fine">Gehost in de EU of op je eigen server &middot; Nederlands, Frans &amp; Engels &middot; Geen kredietkaart nodig</p>
+        <ul class="trust" aria-label="Gegevensveiligheid">
+          <li>Opgeslagen in de EU</li>
+          <li>Strikt gescheiden per klant</li>
+          <li>Nooit gebruikt voor AI-training</li>
+        </ul>
+        <p class="fine">Of op je eigen server &middot; Nederlands, Frans &amp; Engels &middot; Geen kredietkaart nodig</p>
       </div>
 
       <div class="chat" role="img" aria-label="Voorbeeldgesprek: een medewerker vraagt naar ouderschapsverlof en Orewise antwoordt met bronvermelding">
@@ -144,22 +149,63 @@
     </div>
   </section>
 
-  <section id="security" class="section">
-    <div class="wrap split">
-      <div>
-        <h2>Je documenten blijven van jou</h2>
-        <p class="lead small">
-          We bouwden Orewise voor bedrijven die zich geen slordigheid met hun gegevens kunnen permitteren.
-        </p>
+  <section id="security" class="section safety">
+    <div class="wrap">
+      <p class="eyebrow center">Gegevensveiligheid</p>
+      <h2>Je gegevens: veilig, gescheiden en in Europa</h2>
+      <p class="center muted intro">We bouwden Orewise voor bedrijven die zich geen slordigheid met hun gegevens kunnen permitteren. Dit zijn onze afspraken.</p>
+
+      <div class="safety-grid">
+        <article class="safety-card">
+          <span class="icon" aria-hidden="true">EU</span>
+          <h3>Opgeslagen in de EU</h3>
+          <p>Je documenten, de zoekindex, gesprekken en back-ups staan in Europese datacenters. AI-verwerking gebeurt via aanbieders met Europese dataresidentie.</p>
+        </article>
+        <article class="safety-card">
+          <span class="icon" aria-hidden="true">&#9638;</span>
+          <h3>Strikt gescheiden per klant</h3>
+          <p>Elke organisatie heeft een eigen afgeschermde omgeving. Elke zoekvraag wordt op onze server gefilterd op jouw organisatie &mdash; gegevens van andere klanten zijn nooit zichtbaar, ook niet voor de AI.</p>
+        </article>
+        <article class="safety-card">
+          <span class="icon" aria-hidden="true">&#9673;</span>
+          <h3>Alleen wat je mag zien</h3>
+          <p>Toegang loopt per team en per collectie. De AI krijgt enkel tekstfragmenten te zien waar de vraagsteller recht op heeft &mdash; HR-dossiers blijven bij HR.</p>
+        </article>
+        <article class="safety-card">
+          <span class="icon" aria-hidden="true">&#128274;</span>
+          <h3>Versleuteld</h3>
+          <p>Alle verkeer loopt over versleutelde verbindingen (TLS) en opgeslagen gegevens zijn versleuteld. Koppelingen zoals Dropbox bewaren we versleuteld.</p>
+        </article>
+        <article class="safety-card">
+          <span class="icon" aria-hidden="true">&#10007;</span>
+          <h3>Nooit gebruikt voor AI-training</h3>
+          <p>Je documenten en vragen worden niet gebruikt om AI-modellen te trainen. We werken alleen met aanbieders die dat contractueel uitsluiten.</p>
+        </article>
+        <article class="safety-card">
+          <span class="icon" aria-hidden="true">&sect;</span>
+          <h3>AVG-proof &amp; jij blijft eigenaar</h3>
+          <p>Verwerkersovereenkomst, auditlog van wie wat deed, en al je gegevens verwijderen met &eacute;&eacute;n klik. Verwijderd is ook echt weg uit de antwoorden.</p>
+        </article>
       </div>
-      <ul class="checks">
-        <li><strong>Gehost in de EU.</strong> Je gegevens blijven in Europese datacenters.</li>
-        <li><strong>Of volledig op je eigen server.</strong> Draai Orewise on-premises met een eenvoudige Docker-installatie.</li>
-        <li><strong>Optioneel lokale AI.</strong> Klanten die zelf hosten, kunnen het AI-model in huis draaien, zodat niets het gebouw verlaat.</li>
-        <li><strong>Niet gebruikt voor training.</strong> We werken alleen met AI-aanbieders onder voorwaarden die training op je gegevens uitsluiten.</li>
-        <li><strong>AVG-klaar.</strong> Verwerkersovereenkomst, auditlog en al je gegevens verwijderen met &eacute;&eacute;n klik.</li>
-        <li><strong>Strikte scheiding.</strong> De gegevens van elke klant zijn afgeschermd; toegangsregels worden bij elke vraag afgedwongen.</li>
-      </ul>
+
+      <div class="flow-box">
+        <h3>Zo blijven je gegevens gescheiden &mdash; bij elke vraag</h3>
+        <ol class="flow">
+          <li><strong>Aanmelden</strong><span>via Microsoft of Google (SSO)</span></li>
+          <li><strong>Server bepaalt</strong><span>je organisatie en je teams</span></li>
+          <li><strong>Zoeken</strong><span>alleen in documenten waar jij toegang toe hebt</span></li>
+          <li><strong>AI antwoordt</strong><span>uitsluitend op basis van die fragmenten</span></li>
+        </ol>
+        <p class="muted">Deze controle gebeurt op onze servers, niet in de browser. Ook een publieke websitewidget kan dus nooit bij interne documenten.</p>
+      </div>
+
+      <div class="selfhost">
+        <div>
+          <h3>Wil je dat er niets je gebouw verlaat?</h3>
+          <p>Draai Orewise op je eigen server, met een lokaal AI-model. Je documenten en vragen blijven volledig binnen je eigen netwerk.</p>
+        </div>
+        <a class="btn btn-ghost" href="mailto:hello@orewise.io?subject=Orewise%20zelf%20gehost">Vraag naar zelf hosten</a>
+      </div>
     </div>
   </section>
 
@@ -224,6 +270,14 @@
   <section id="faq" class="section">
     <div class="wrap narrow">
       <h2>Vragen</h2>
+      <details>
+        <summary>Waar worden mijn gegevens opgeslagen?</summary>
+        <p>In Europese datacenters: je documenten, de zoekindex, gesprekken en back-ups. Voor het formuleren van antwoorden gebruiken we AI-aanbieders met Europese dataresidentie, die je gegevens niet gebruiken voor training. Wil je dat er niets je netwerk verlaat, dan kan je Orewise zelf hosten met een lokaal AI-model.</p>
+      </details>
+      <details>
+        <summary>Kunnen andere klanten mijn documenten zien?</summary>
+        <p>Nee. Elke organisatie is afgeschermd, en bij elke vraag filtert onze server de zoekresultaten op jouw organisatie en jouw toegangsrechten v&oacute;&oacute;r de AI iets te zien krijgt. Ook binnen je eigen bedrijf ziet iemand alleen de collecties waar hij of zij toegang toe heeft.</p>
+      </details>
       <details>
         <summary>Wat telt als een document?</summary>
         <p>E&eacute;n bestand is &eacute;&eacute;n document, of het nu een memo van &eacute;&eacute;n pagina is of een handleiding van 300 pagina's. Elk plan heeft ook een opslaglimiet.</p>

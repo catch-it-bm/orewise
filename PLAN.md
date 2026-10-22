@@ -228,6 +228,14 @@ SPRING_AI_OLLAMA_BASE_URL=http://ollama-host:11434
 - Prompt-injection mitigation: delimited context, system prompt priority, no tool calls.
 - Encrypted connector credentials.
 
+Public commitments on the marketing site (must stay true):
+- Documents, search index, conversations and backups stored in EU data centres.
+- AI providers with EU data residency and contractual exclusion of training on customer data.
+- Per-tenant isolation enforced server-side on every query (OpenSearch filter), also for the AI context.
+- ACL per team/collection applied before chunks reach the AI.
+- TLS in transit, encryption at rest, encrypted connector credentials.
+- DPA, audit log, one-click deletion of all tenant data (including removal from the index).
+
 ---
 
 ## 9. Repository layout
