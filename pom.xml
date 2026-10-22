@@ -11,7 +11,7 @@
         <relativePath/>
     </parent>
 
-    <groupId>eu.orewise</groupId>
+    <groupId>io.orewise</groupId>
     <artifactId>orewise</artifactId>
     <version>0.1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
@@ -45,12 +45,12 @@
                 <version>${jobrunr.version}</version>
             </dependency>
             <dependency>
-                <groupId>eu.orewise</groupId>
+                <groupId>io.orewise</groupId>
                 <artifactId>orewise-core</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>eu.orewise</groupId>
+                <groupId>io.orewise</groupId>
                 <artifactId>orewise-connectors</artifactId>
                 <version>${project.version}</version>
             </dependency>

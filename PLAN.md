@@ -3,7 +3,7 @@
 > **Orewise** - *Mine the wisdom in your files.*
 > RAG platform that lets small enterprises chat with the knowledge buried in their documents.
 
-Before committing to the name: check EUIPO + BOIP (classes 9, 42) and domains `orewise.com`, `orewise.ai`, `orewise.eu`.
+Domain: `orewise.io`. Still to check: EUIPO + BOIP trademark (classes 9, 42).
 
 ---
 
@@ -181,7 +181,7 @@ services:
 ## 6. Widget
 
 ```html
-<script src="https://cdn.orewise.eu/widget.js" type="module"></script>
+<script src="https://cdn.orewise.io/widget.js" type="module"></script>
 <orewise-chat widget-key="pk_live_..." mode="public"></orewise-chat>
 <orewise-chat widget-key="pk_live_..." mode="intranet"></orewise-chat>
 ```
