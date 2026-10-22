@@ -34,6 +34,9 @@ public class Tenant {
     @Column(name = "storage_limit_bytes", nullable = false)
     private long storageLimitBytes;
 
+    @Column(name = "monthly_question_limit", nullable = false)
+    private int monthlyQuestionLimit;
+
     @Column(name = "created_at", nullable = false)
     private Instant createdAt;
 
@@ -53,6 +56,7 @@ public class Tenant {
         this.plan = plan;
         this.docLimit = plan.defaultDocLimit();
         this.storageLimitBytes = plan.defaultStorageLimitBytes();
+        this.monthlyQuestionLimit = plan.defaultMonthlyQuestionLimit();
     }
 
     public UUID getId() {
@@ -77,6 +81,10 @@ public class Tenant {
 
     public long getStorageLimitBytes() {
         return storageLimitBytes;
+    }
+
+    public int getMonthlyQuestionLimit() {
+        return monthlyQuestionLimit;
     }
 
     public Instant getCreatedAt() {

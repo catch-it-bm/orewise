@@ -11,6 +11,8 @@
         <dd>up to {{ t.docLimit }}</dd>
         <dt>Storage</dt>
         <dd>up to {{ gb(t.storageLimitBytes) }} GB</dd>
+        <dt>Questions</dt>
+        <dd>{{ t.monthlyQuestionLimit }} / month</dd>
       </dl>
     </section>
   }
@@ -20,7 +22,7 @@
       <h2>Tenants</h2>
       <table>
         <thead>
-          <tr><th>Slug</th><th>Name</th><th>Plan</th><th>Documents</th><th>Storage</th></tr>
+          <tr><th>Slug</th><th>Name</th><th>Plan</th><th>Documents</th><th>Storage</th><th>Questions / month</th></tr>
         </thead>
         <tbody>
           @for (t of tenants(); track t.slug) {
@@ -36,6 +38,7 @@
               </td>
               <td>{{ t.docLimit }}</td>
               <td>{{ gb(t.storageLimitBytes) }} GB</td>
+              <td>{{ t.monthlyQuestionLimit }}</td>
             </tr>
           }
         </tbody>

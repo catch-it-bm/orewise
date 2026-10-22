@@ -34,8 +34,9 @@ class TenantApiTest {
                         .content("""
                                 {"slug":"acme","name":"Acme NV","plan":"BASIC"}"""))
                 .andExpect(status().isCreated())
-                .andExpect(jsonPath("$.docLimit").value(1000))
-                .andExpect(jsonPath("$.storageLimitBytes").value(2147483648L));
+                .andExpect(jsonPath("$.docLimit").value(2500))
+                .andExpect(jsonPath("$.storageLimitBytes").value(5368709120L))
+                .andExpect(jsonPath("$.monthlyQuestionLimit").value(2000));
 
         mvc.perform(post("/api/admin/tenants").with(platformAdmin())
                         .contentType(MediaType.APPLICATION_JSON)
@@ -48,7 +49,8 @@ class TenantApiTest {
                         .content("""
                                 {"plan":"PRO"}"""))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.docLimit").value(10000));
+                .andExpect(jsonPath("$.docLimit").value(10000))
+                .andExpect(jsonPath("$.monthlyQuestionLimit").value(7500));
 
         mvc.perform(get("/api/me").with(jwt()
                         .jwt(j -> j.claim("preferred_username", "jan").claim("groups", List.of("/tenants/acme/hr")))

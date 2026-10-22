@@ -1,7 +1,17 @@
 import { provideHttpClient } from '@angular/common/http';
 import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
+import { Tenant } from '../api';
 import { Dashboard } from './dashboard';
+
+const demo: Tenant = {
+  slug: 'demo',
+  name: 'Demo BV',
+  plan: 'BASIC',
+  docLimit: 2500,
+  storageLimitBytes: 5 * 1024 ** 3,
+  monthlyQuestionLimit: 2000,
+};
 
 describe('Dashboard', () => {
   let http: HttpTestingController;
@@ -20,18 +30,15 @@ describe('Dashboard', () => {
     const fixture = TestBed.createComponent(Dashboard);
     fixture.detectChanges();
 
-    http.expectOne('/api/me').flush({
-      username: 'jan',
-      roles: ['tenant-admin'],
-      tenant: { slug: 'demo', name: 'Demo BV', plan: 'BASIC', docLimit: 1000, storageLimitBytes: 2 * 1024 ** 3 },
-    });
+    http.expectOne('/api/me').flush({ username: 'jan', roles: ['tenant-admin'], tenant: demo });
     await fixture.whenStable();
 
     const text = (fixture.nativeElement as HTMLElement).textContent!;
     expect(text).toContain('Demo BV');
     expect(text).toContain('BASIC');
-    expect(text).toContain('up to 1000');
-    expect(text).toContain('up to 2 GB');
+    expect(text).toContain('up to 2500');
+    expect(text).toContain('up to 5 GB');
+    expect(text).toContain('2000 / month');
     expect(text).not.toContain('Tenants');
   });
 
@@ -40,9 +47,7 @@ describe('Dashboard', () => {
     fixture.detectChanges();
 
     http.expectOne('/api/me').flush({ username: 'root', roles: ['platform-admin'], tenant: null });
-    http.expectOne('/api/admin/tenants').flush([
-      { slug: 'demo', name: 'Demo BV', plan: 'BASIC', docLimit: 1000, storageLimitBytes: 2 * 1024 ** 3 },
-    ]);
+    http.expectOne('/api/admin/tenants').flush([demo]);
     await fixture.whenStable();
     expect((fixture.nativeElement as HTMLElement).textContent).toContain('Demo BV');
 

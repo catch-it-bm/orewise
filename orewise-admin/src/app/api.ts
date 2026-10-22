@@ -10,6 +10,7 @@ export interface Tenant {
   plan: Plan;
   docLimit: number;
   storageLimitBytes: number;
+  monthlyQuestionLimit: number;
 }
 
 export interface Me {

@@ -23,7 +23,7 @@ Domain: `orewise.io`. Still to check: EUIPO + BOIP trademark (classes 9, 42).
 | Access control | Group-based collections (Keycloak groups -> collections) |
 | Languages / region | Dutch + French + English, EU hosting |
 | First connectors | Manual upload, Dropbox API (personal + shared folders, no Business team folders), mounted-folder (self-host only) |
-| Pricing | Document volume: file count + storage cap per tier |
+| Pricing | Document volume tiers (file count + storage cap) with a fair-use monthly question allowance. EUR, excl. VAT. Basic EUR 99 / Pro EUR 249 / Business EUR 499 per month; self-host from EUR 400/month. Yearly = 2 months free. |
 | Quota exceeded | Skip new files (`QUOTA_EXCEEDED`), sync continues, admin notified |
 | CI | GitHub Actions |
 | MVP timeline | ~10 weeks |
@@ -71,6 +71,7 @@ Domain: `orewise.io`. Still to check: EUIPO + BOIP trademark (classes 9, 42).
 - Per-tenant filtered alias with routing on `tenant_id` (avoids shard explosion).
 - Self-host = single tenant, same code.
 - One index per embedding model (dimensions differ). Provider switch triggers background re-embed.
+- Vector memory is the main infra cost at high tiers (50K docs ~ 2M chunks). Mitigations: 512-dim embeddings (OpenAI `dimensions` parameter) and OpenSearch on-disk / quantized k-NN mode.
 
 ### 3.2 Chunk document
 
@@ -160,21 +161,26 @@ services:
 
 ## 5. Pricing + quotas
 
-| Tier | Documents | Storage | Widgets | Connectors |
-|---|---|---|---|---|
-| Basic | 1,000 | 2 GB | 1 intranet + 1 public | Upload + 1 |
-| Pro | 10,000 | 20 GB | 5 | Upload + 3 |
-| Business | 50,000 | 100 GB | unlimited | all |
-| Enterprise / self-host | per license | per license | unlimited | all |
+All prices in EUR, excl. VAT. Yearly billing = 2 months free.
 
-(Numbers are a starting point.)
+| Tier | Price / month | Documents | Storage | Questions / month | Widgets | Connectors |
+|---|---|---|---|---|---|---|
+| Basic | EUR 99 | 2,500 | 5 GB | 2,000 | 1 intranet + 1 public | Upload + 1 |
+| Pro | EUR 249 | 10,000 | 20 GB | 7,500 | 5 | Upload + 3 |
+| Business | EUR 499 | 50,000 | 100 GB | 20,000 | unlimited | all |
+| Self-hosted | from EUR 400 | per license | per license | unlimited | unlimited | all |
+
+Market reference (Oct 2026): Chatbase USD 40 / 150 / 500, CustomGPT.ai USD 99 (5K docs) / 499 (20K docs, 5K queries), ChatGPT Business USD 20-25 per user.
+
+Rough unit costs: indexing ~EUR 0.20 per 1K docs; ~EUR 0.003 per question with a mini-class chat model. Questions are the main variable cost, hence the allowance.
 
 - 1 document = 1 source file. Storage cap prevents abuse with huge files.
-- Counters per tenant in Postgres (`plan`, `doc_limit`, `storage_limit`, usage).
+- Counters per tenant in Postgres (`plan`, `doc_limit`, `storage_limit_bytes`, `monthly_question_limit`, usage).
 - Enforcement in worker before parsing. Over limit -> file status `QUOTA_EXCEEDED`, skipped; sync continues; admin banner + email. Freed capacity (delete / upgrade) -> skipped files re-queued.
+- Question allowance is fair use: usage shown in admin, warning at 80%; no hard cut-off in MVP.
 - Self-host licensing: signed JWT (Ed25519) with tier, doc limit, expiry. Offline verification.
 - Billing: MVP manual tier assignment in admin. Stripe post-MVP.
-- Cost guard: daily token budget per tier.
+- Cost guard: daily token budget per tier (protects against public-widget abuse).
 
 ---
 
@@ -248,7 +254,7 @@ orewise/
 | Week | Deliverable | Verify |
 |---|---|---|
 | 1 | Skeleton, Compose stack, Keycloak, CI, tenant model with plan/limits | Stack up, admin login works |
-| 2-3 | Upload ingestion: Tika, chunk, embed, OpenSearch; quota enforcement | 1K files indexed; file 1,001 -> `QUOTA_EXCEEDED` |
+| 2-3 | Upload ingestion: Tika, chunk, embed, OpenSearch; quota enforcement | 2.5K files indexed; file 2,501 -> `QUOTA_EXCEEDED` |
 | 4-5 | Chat: rewrite, hybrid search, ACL filter, SSE, citations | 30-question NL/FR/EN golden set >= 80% |
 | 6 | Dropbox connector: OAuth, full + delta sync, webhook, deletes | Add / edit / delete in Dropbox reflected within 1 min |
 | 7 | Angular admin: collections, Dropbox setup, usage meters, widgets | Admin onboards tenant end-to-end without API |
