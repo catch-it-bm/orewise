@@ -1,0 +1,26 @@
+# Optional local AI for Orewise. Runs separately from the core stack (deploy/compose).
+# Point Orewise at it with:
+#   OREWISE_AI_PROVIDER=ollama
+#   SPRING_AI_OLLAMA_BASE_URL=http://<this-host>:11434
+# Pull models once: docker compose exec ollama ollama pull bge-m3
+name: orewise-ollama
+
+services:
+  ollama:
+    image: ollama/ollama
+    restart: unless-stopped
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama:/root/.ollama
+    # NVIDIA GPU: uncomment (needs nvidia-container-toolkit)
+    # deploy:
+    #   resources:
+    #     reservations:
+    #       devices:
+    #         - driver: nvidia
+    #           count: all
+    #           capabilities: [gpu]
+
+volumes:
+  ollama:

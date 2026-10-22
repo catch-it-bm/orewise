@@ -1,0 +1,63 @@
+@if (me(); as me) {
+  <h1>Welcome, {{ me.username }}</h1>
+
+  @if (me.tenant; as t) {
+    <section class="card">
+      <h2>{{ t.name }}</h2>
+      <dl>
+        <dt>Plan</dt>
+        <dd class="plan">{{ t.plan }}</dd>
+        <dt>Documents</dt>
+        <dd>up to {{ t.docLimit }}</dd>
+        <dt>Storage</dt>
+        <dd>up to {{ gb(t.storageLimitBytes) }} GB</dd>
+      </dl>
+    </section>
+  }
+
+  @if (me.roles.includes('platform-admin')) {
+    <section class="card">
+      <h2>Tenants</h2>
+      <table>
+        <thead>
+          <tr><th>Slug</th><th>Name</th><th>Plan</th><th>Documents</th><th>Storage</th></tr>
+        </thead>
+        <tbody>
+          @for (t of tenants(); track t.slug) {
+            <tr>
+              <td>{{ t.slug }}</td>
+              <td>{{ t.name }}</td>
+              <td>
+                <select [value]="t.plan" (change)="changePlan(t.slug, $any($event.target).value)">
+                  @for (p of plans; track p) {
+                    <option [value]="p">{{ p }}</option>
+                  }
+                </select>
+              </td>
+              <td>{{ t.docLimit }}</td>
+              <td>{{ gb(t.storageLimitBytes) }} GB</td>
+            </tr>
+          }
+        </tbody>
+      </table>
+
+      <form [formGroup]="form" (ngSubmit)="createTenant()">
+        <input formControlName="slug" placeholder="slug (e.g. acme)" />
+        <input formControlName="name" placeholder="Company name" />
+        <select formControlName="plan">
+          @for (p of plans; track p) {
+            <option [value]="p">{{ p }}</option>
+          }
+        </select>
+        <button type="submit" [disabled]="form.invalid">Create tenant</button>
+      </form>
+      @if (error(); as e) {
+        <p class="error">{{ e }}</p>
+      }
+    </section>
+  }
+
+  @if (!me.tenant && !me.roles.includes('platform-admin')) {
+    <p>Your account is not linked to a tenant yet. Ask your administrator.</p>
+  }
+}

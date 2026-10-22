@@ -1,0 +1,28 @@
+server:
+  port: 8090
+
+spring:
+  application:
+    name: orewise-worker
+  datasource:
+    url: ${OREWISE_DB_URL:jdbc:postgresql://localhost:5432/orewise}
+    username: ${OREWISE_DB_USER:orewise}
+    password: ${OREWISE_DB_PASSWORD:orewise}
+  jpa:
+    open-in-view: false
+    hibernate:
+      # Schema is owned by orewise-api (Flyway).
+      ddl-auto: validate
+
+jobrunr:
+  background-job-server:
+    enabled: true
+  dashboard:
+    enabled: ${OREWISE_JOBRUNR_DASHBOARD:true}
+    port: 8000
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
