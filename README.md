@@ -12,6 +12,7 @@ orewise-worker/      background jobs (JobRunr)
 orewise-admin/       Angular admin UI
 deploy/compose/      self-host / dev stack (no Ollama)
 deploy/ollama/       optional separate Ollama stack
+marketing/           static marketing site (orewise.io), no build step
 ```
 
 ## Prerequisites
